@@ -1,11 +1,11 @@
-package edu.ucne.celainylopez_ap2_p1.presentation.sistema
+package edu.ucne.celainylopez_ap2_p1.presentation.tareas
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class SistemaViewModel @Inject constructor(
+class TareaViewModel @Inject constructor(
 
 ) : ViewModel() {
 }

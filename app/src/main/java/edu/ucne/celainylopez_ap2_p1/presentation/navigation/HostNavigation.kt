@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import edu.ucne.celainylopez_ap2_p1.presentation.sistema.SistemaListScreen
+import edu.ucne.celainylopez_ap2_p1.presentation.tareas.TareaListScreen
 
 @Composable
 fun HostNavigation(
@@ -13,10 +13,10 @@ fun HostNavigation(
     ) {
     NavHost(
         navController = navHostController,
-        startDestination = Screen.SistemaList
+        startDestination = Screen.TareaList
     ) {
-        composable<Screen.SistemaList>{
-            SistemaListScreen()
+        composable<Screen.TareaList>{
+            TareaListScreen()
         }
     }
 }
