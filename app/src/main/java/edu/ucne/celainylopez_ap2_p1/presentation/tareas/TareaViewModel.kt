@@ -30,7 +30,7 @@ class TareaViewModel @Inject constructor(
         when (event) {
             is TareaEvent.TareaChange -> onTareaIdChange(event.tareaId)
             is TareaEvent.DescripcionChange -> onDescripcionChange(event.descripcion)
-            is TareaEvent.TiempoChange -> onTiempoChange(event.tiempo)
+            is TareaEvent.TiempoChange -> OnTiempoChange(event.tiempo)
 
             TareaEvent.Save -> viewModelScope.launch { saveTarea() }
             TareaEvent.Delete -> deleteTarea()
@@ -40,7 +40,7 @@ class TareaViewModel @Inject constructor(
 
 
     suspend fun saveTarea(): Boolean {
-        return if (_uiState.value.descripcion.isNullOrBlank()) {
+        return if (_uiState.value.descripcion.isNullOrBlank() || _uiState.value.tiempo <= 0) {
             _uiState.update {
                 it.copy(errorMessage = "Campos vacios")
             }
@@ -123,16 +123,11 @@ class TareaViewModel @Inject constructor(
         }
     }
 
-    private fun onTiempoChange(tiempo: Int) {
-        viewModelScope.launch {
-            _uiState.update {
-                it.copy(
-                    tiempo = tiempo
-                )
-            }
+    private fun OnTiempoChange(tiempo: Int) {
+        _uiState.update {
+            it.copy(tiempo = tiempo)
         }
     }
-
 
 
     fun TareaUiState.toEntity() = TareaEntity(
